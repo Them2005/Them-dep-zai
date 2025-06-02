@@ -34,7 +34,17 @@ if file_tai is not None:
         mime="text/plain" 
     )
 
-
-
 ##SS 2 
- 
+st.header("Hiển thị file tần suất")
+
+tan_suat = st.file_uploader("Chọn file tần suất")
+
+if tan_suat is not None:
+    noi_dung = tan_suat.read().decode("utf-8")
+    tan_suat_tu = {}
+    for dong in noi_dung.strip().split("\n"):
+        if ":" in dong:
+            tu,so_luong = dong.split(":")
+            tan_suat_tu[tu.strip()] = int(so_luong.strip())
+    st.subheader("Tần suất từ")
+    st.write(tan_suat_tu)
