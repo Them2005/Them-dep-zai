@@ -2,6 +2,11 @@ import streamlit as st
 import re
 import os
 
+
+tai_file_stop_words = st.file_uploader("Tải lên stopwords.txt", type="txt")
+file_uploader = st.file_uploader("Tải lên giao-duc.txt", type="txt")
+file_uploader = st.file_uploader("Tải lên the_thao.txt", type="txt")
+file_uploader = st.file_uploader("Tải lên kinh-te.txt", type="txt")
 def classify(text):
     text = text.lower()
     text = re.sub(r'[.,–?:@#$%^&*()+=_`~!{}"\n]', ' ', text)
@@ -72,3 +77,4 @@ for topic in topics:
     with open(file_out, mode='w', encoding='utf-8') as f:
         for tu, count in tan_suat.items():  
             f.write(f'{tu}:{count}\n')
+
